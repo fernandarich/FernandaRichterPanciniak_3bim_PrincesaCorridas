@@ -1,0 +1,339 @@
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;700&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Orbitron', sans-serif;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    background:
+        linear-gradient(rgba(0,0,0,0.75), rgba(0,0,0,0.75)),
+        url('https://images.unsplash.com/photo-1517846693594-1567da72af75?auto=format&fit=crop&w=1600&q=80');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    color: white;
+}
+
+/* HEADER */
+header {
+    text-align: center;
+    padding: 35px;
+    background: linear-gradient(90deg, #ff6a00, #ffae00);
+    color: black;
+    border-bottom: 5px solid white;
+}
+
+header h1 {
+    font-size: 2.5rem;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+}
+
+header p {
+    margin-top: 10px;
+    font-size: 0.9rem;
+}
+
+/* CONTAINER PRINCIPAL */
+.container-master {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    padding: 30px;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    flex: 1;
+}
+
+.conteudo-principal {
+    display: flex;
+    gap: 30px;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+/* FORMULÁRIO (ESQUERDA) */
+.form-esquerda {
+    width: 500px;
+    background: rgba(20, 20, 20, 0.95);
+    padding: 25px;
+    border-radius: 20px;
+    border: 3px solid #ff6a00;
+    box-shadow: 0 0 25px rgba(255, 106, 0, 0.5);
+}
+
+.form-esquerda h2 {
+    text-align: center;
+    margin-bottom: 25px;
+    color: #ffae00;
+}
+
+label {
+    display: block;
+    margin-top: 15px;
+    margin-bottom: 5px;
+    font-size: 0.8rem;
+}
+
+/* INPUTS E SELECTS */
+input[type="text"],
+input[type="number"],
+input[type="date"],
+select {
+    width: 100%;
+    padding: 12px;
+    border: none;
+    border-radius: 10px;
+    background: #2c2c2c;
+    color: white;
+    font-family: inherit;
+    font-size: 0.9rem;
+}
+
+select {
+    cursor: pointer;
+}
+
+select option {
+    background: #2c2c2c;
+    color: white;
+}
+
+input:focus,
+select:focus {
+    outline: 2px solid #ff6a00;
+}
+
+/* CHECKBOX */
+input[type="checkbox"] {
+    width: 20px;
+    height: 20px;
+    accent-color: #ff6a00;
+    cursor: pointer;
+    vertical-align: middle;
+}
+
+/* ÁREA DINÂMICA DA FICHA DO PILOTO */
+#areaFicha {
+    margin-top: 15px;
+    padding: 15px;
+    background: rgba(255, 106, 0, 0.1);
+    border: 1px dashed #ff6a00;
+    border-radius: 10px;
+}
+
+/* LINHA DO ID */
+.linha-id {
+    display: flex;
+    gap: 10px;
+}
+
+.linha-id input[type="number"] {
+    flex: 1;
+}
+
+/* PAINEL DIREITO - IMAGEM */
+.form-direita {
+    width: 320px;
+    background: rgba(20, 20, 20, 0.95);
+    padding: 25px;
+    border-radius: 20px;
+    border: 3px solid #ff6a00;
+    box-shadow: 0 0 25px rgba(255, 106, 0, 0.5);
+    text-align: center;
+}
+
+.form-direita h2 {
+    color: #ffae00;
+    margin-bottom: 5px;
+}
+
+.instrucao-imagem {
+    font-size: 0.75rem;
+    color: #aaa;
+    margin-bottom: 20px;
+}
+
+.img-container {
+    width: 100%;
+    height: 220px;
+    border: 2px dashed #ffae00;
+    border-radius: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    background: #111;
+}
+
+.img-container img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+}
+
+.img-container img:hover {
+    transform: scale(1.05);
+}
+
+/* BOTÕES */
+input[type="button"] {
+    cursor: pointer;
+    border: none;
+    border-radius: 10px;
+    padding: 12px 18px;
+    font-family: inherit;
+    font-weight: bold;
+    transition: 0.3s;
+}
+
+#btProcure {
+    background: #ffae00;
+    color: black;
+}
+
+#btInserir {
+    background: #1ed760;
+    color: white;
+}
+
+#btAlterar {
+    background: #00a8ff;
+    color: white;
+}
+
+#btExcluir {
+    background: #ff3b30;
+    color: white;
+}
+
+#btSalvar {
+    background: #1ed760;
+    color: white;
+    flex: 1;
+}
+
+#btCancelar {
+    background: #666;
+    color: white;
+    flex: 1;
+}
+
+input[type="button"]:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 0 15px rgba(255, 255, 255, 0.3);
+}
+
+/* AVISOS */
+#divAviso {
+    margin-top: 20px;
+    background: rgba(255, 174, 0, 0.15);
+    border-left: 5px solid #ffae00;
+    padding: 12px;
+    border-radius: 8px;
+    font-size: 0.85rem;
+}
+
+/* BOTÕES DE AÇÃO */
+.botoes-acao {
+    display: flex;
+    gap: 10px;
+    margin-top: 20px;
+}
+
+/* LISTA LATERAL */
+.lista-unidades {
+    width: 100%;
+    max-width: 850px;
+    background: rgba(20, 20, 20, 0.95);
+    padding: 25px;
+    border-radius: 20px;
+    border: 3px solid white;
+    position: relative;
+    overflow: hidden;
+}
+
+.lista-unidades::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 12px;
+    width: 100%;
+    background: repeating-linear-gradient(
+        45deg,
+        black 0px,
+        black 20px,
+        white 20px,
+        white 40px
+    );
+}
+
+.lista-unidades h3 {
+    text-align: center;
+    margin-bottom: 20px;
+    color: #ffae00;
+}
+
+#outputSaida {
+    max-height: 500px;
+    overflow-y: auto;
+    padding: 10px;
+    line-height: 1.8;
+}
+
+/* BARRA DE ROLAGEM (SCROLLBAR) */
+::-webkit-scrollbar {
+    width: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #ff6a00;
+    border-radius: 10px;
+}
+
+/* FOOTER */
+footer {
+    margin-top: auto;
+    text-align: center;
+    padding: 20px;
+    background: black;
+    border-top: 3px solid #ff6a00;
+}
+
+/* AJUSTES PARA REMOVER SETAS DE NUMEROS */
+input[type="number"]::-webkit-outer-spin-button,
+input[type="number"]::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+input[type="number"] {
+    -moz-appearance: textfield;
+    appearance: textfield;
+}
+
+/* RESPONSIVIDADE */
+@media (max-width: 1100px) {
+    .container-master,
+    .conteudo-principal {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .form-esquerda,
+    .form-direita,
+    .lista-unidades {
+        width: 100%;
+        max-width: 600px;
+    }
+}

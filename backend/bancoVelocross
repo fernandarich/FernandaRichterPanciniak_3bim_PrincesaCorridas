@@ -1,0 +1,232 @@
+CREATE TABLE PESSOA (
+	id_pessoa INTEGER PRIMARY KEY,
+	nome VARCHAR(200) NOT NULL,
+	data_nascimento DATE,
+	cidade VARCHAR(50),
+	telefone VARCHAR(20),
+	email VARCHAR(200) UNIQUE,
+	foto VARCHAR(255)
+);
+
+--DROP TABLE PESSOA;
+--DROP TABLE CATEGORIA;
+
+CREATE TABLE CATEGORIA (
+	id_categoria INTEGER PRIMARY KEY,
+	nome_categoria VARCHAR(200) NOT NULL,
+	descricao VARCHAR
+);
+
+
+CREATE TABLE MOTO (
+	id_moto INTEGER PRIMARY KEY,
+	modelo VARCHAR(100) NOT NULL,
+	marca VARCHAR(50),
+	ano INTEGER,
+	foto VARCHAR(255)
+);
+
+--DROP TABLE MOTO;
+
+CREATE TABLE PILOTO (
+    id_pessoa INTEGER PRIMARY KEY,
+    numero_piloto INTEGER NOT NULL,
+    id_categoria INTEGER NOT NULL,
+    id_moto INTEGER NOT NULL,
+	FOREIGN KEY (id_pessoa)
+        REFERENCES PESSOA(id_pessoa),
+	FOREIGN KEY (id_categoria)
+        REFERENCES CATEGORIA(id_categoria),
+	FOREIGN KEY (id_moto)
+        REFERENCES MOTO(id_moto)
+);
+
+--DROP TABLE PILOTO;
+
+CREATE TABLE FICHA (
+    id_moto INTEGER PRIMARY KEY,
+    escapamento VARCHAR(100),
+    suspensao VARCHAR(100),
+    motor VARCHAR(100),
+	FOREIGN KEY (id_moto)
+        REFERENCES MOTO(id_moto)
+);
+
+--DROP TABLE FICHA;
+
+CREATE TABLE CORRIDA (
+  id_corrida INTEGER PRIMARY KEY,
+  nome VARCHAR(100) NOT NULL,
+  cidade VARCHAR(100),
+  data_corrida DATE,
+  id_categoria INTEGER,
+  foto VARCHAR (255),
+  FOREIGN KEY (id_categoria) 
+  		REFERENCES CATEGORIA(id_categoria)
+);
+
+
+INSERT INTO CATEGORIA (id_categoria, nome_categoria, descricao)
+VALUES
+(1, 'Feminino', 'Categoria feminina'),
+(2, 'Iniciante', 'Pilotos iniciantes'),
+(3, 'Intermediaria', 'Pilotos intermediarios'),
+(4, 'Nacional 250', 'Motos nacionais ate 250cc'),
+(5, 'Importadas', 'Motos importadas');
+
+INSERT INTO MOTO (id_moto, modelo, marca, ano, foto)
+VALUES
+(1, 'CRF230F', 'Honda', 2017, '1.png'),
+(2, 'XR200', 'Honda', 2002, '2.png'),
+(3, 'KX250F', 'Kawasaki', 2019, '3.png'),
+(4, 'YZ250F', 'Yamaha', 2020, '4.png'),
+(5, 'FC350', 'Husqvarna', 2021, '5.png');
+
+INSERT INTO PESSOA (id_pessoa, nome, data_nascimento, cidade, telefone, email, foto)
+VALUES
+(1, 'Fernanda Richter', '2010-01-01', 'Tuneiras do Oeste', '44999999999', 'fernanda@email.com', 'fernanda.jpg'),
+(2, 'Eduardo Richter', '2007-05-10', 'Tuneiras do Oeste', '44988888888', 'eduardo@email.com', 'eduardo.jpg'),
+(3, 'Pedro Silva', '2011-03-15', 'Umuarama', '44977777777', 'pedro@email.com', 'pedro.jpg');
+
+
+INSERT INTO FICHA (id_moto, escapamento, suspensao, motor)
+VALUES
+(1, 'PowerCore 4', 'Original Honda', 'Original'),
+(2, 'Pro Tork 788', 'Preparada para trilha', '220cc'),
+(3, 'FMF Factory 4.1', 'Showa Original', 'Original'),
+(4, 'Akrapovic', 'KYB Original', 'Original'),
+(5, 'FMF Powercore', 'WP XACT', 'Original');
+
+
+INSERT INTO PILOTO (id_pessoa, numero_piloto, id_categoria, id_moto, id_equipe)
+VALUES
+(1, 12, 1, 1, 1), -- Fernanda (Feminino, CRF230F, Richter Racing)
+(2, 7, 3, 3, 1),  -- Eduardo (Intermediaria, KX250F, Richter Racing)
+(3, 99, 2, 2, 3); -- Pedro (Iniciante, XR200, Parana Velocross)
+
+UPDATE MOTO
+SET foto = '1.jpg'
+WHERE id_moto = 1;
+
+UPDATE MOTO
+SET foto = '2.jpg'
+WHERE id_moto = 2;
+
+UPDATE MOTO 
+SET foto = '3.jpg'
+WHERE id_moto = 3;
+
+UPDATE MOTO
+SET foto = '5.jpg'
+WHERE id_moto = 5;
+
+INSERT INTO CORRIDA (id_corrida, nome, cidade, data_corrida, id_categoria, foto)
+VALUES
+(1, '1ª Etapa Tuneiras MX', 'Tuneiras do Oeste', '2026-03-15', 1, '1pista.jpg'),
+(2, '2ª Etapa Umuarama Velocross', 'Umuarama', '2026-04-20', 3, '2pista.jpg'),
+(3, '3ª Etapa Maringa MX', 'Maringa', '2026-05-17', 4, '3pista.jpg'),
+(4, '4ª Etapa Cianorte Velocross', 'Cianorte', '2026-06-21', 2, '4pista.jpg'),
+(5, 'Final Parana MX - Tuneiras', 'Tuneiras do Oeste', '2026-09-10', 5, '5pista.jpg');
+
+UPDATE PESSOA
+SET foto = '1p.jpeg'
+WHERE id_pessoa = 1;
+
+UPDATE PESSOA
+SET foto = '2p.jpeg'
+WHERE id_pessoa = 2;
+
+UPDATE PESSOA
+SET foto = '3p.jpeg'
+WHERE id_pessoa = 3;
+
+SQL
+
+INSERT INTO CATEGORIA (id_categoria, nome_categoria, descricao)
+VALUES
+(9, 'VX2', 'Motos ate 250cc 4T ou 125cc 2T'),
+(10, 'VX3 Junior', 'Pilotos com idade ate 18 anos'),
+(11, 'VX3 Master', 'Pilotos com idade acima de 35 anos'),
+(12, 'VX4 Senior', 'Pilotos com idade acima de 40 anos'),
+(13, 'VX5 Veteranos', 'Pilotos com idade acima de 50 anos'),
+(14, 'Nacional Pro', 'Motos nacionais preparadas sem limite de cc'),
+(15, 'Nacional Forca Livre', 'Motos de fabricacao nacional preparadas'),
+(16, 'Mini Moto', 'Pilotos infantis em motos ate 65cc'),
+(17, 'Junior 85cc', 'Pilotos jovens em motos de 85cc'),
+(18, 'Batom / Batom Pro', 'Categoria feminina iniciante e intermediaria'),
+(19, 'Estreantes', 'Pilotos na primeira ou segunda temporada');
+
+INSERT INTO MOTO (id_moto, modelo, marca, ano, foto)
+VALUES
+(8, 'CRF250F', 'Honda', 2022, '8.jpg'),
+(9, 'TTR230', 'Yamaha', 2018, '9.jpg'),
+(10, 'KX450F', 'Kawasaki', 2021, '10.jpg'),
+(11, 'YZ125', 'Yamaha', 2019, '11.jpg'),
+(12, 'SX250', 'KTM', 2020, '12.jpg'),
+(13, 'RMZ250', 'Suzuki', 2017, '13.jpg'),
+(14, 'CRF450R', 'Honda', 2023, '14.jpg'),
+(15, 'FE250', 'Husqvarna', 2022, '15.jpg'),
+(16, 'XC250', 'GasGas', 2021, '16.jpg'),
+(17, 'XR250 Tornado', 'Honda', 2008, '17.jpg'),
+(18, 'Bros 160', 'Honda', 2020, '18.jpg'),
+(19, 'KX85', 'Kawasaki', 2022, '19.jpg');
+
+INSERT INTO PESSOA (id_pessoa, nome, data_nascimento, cidade, telefone, email, foto)
+VALUES
+(6, 'Lucas Andrade', '1998-04-12', 'Maringá', '44966665555', 'lucas.andrade@email.com', '6p.jpg'),
+(7, 'Mariana Costa', '2001-08-23', 'Campo Mourão', '44977776666', 'mariana.costa@email.com', '7p.jpg'),
+(8, 'Gabriel Santos', '1995-11-30', 'Cianorte', '44988887777', 'gabriel.santos@email.com', '8p.jpg'),
+(9, 'Camila Oliveira', '2003-02-14', 'Cascavel', '44999998888', 'camila.oliveira@email.com', '9p.jpg'),
+(10, 'Rafael Souza', '1992-06-18', 'Londrina', '44955554444', 'rafael.souza@email.com', '10p.jpg'),
+(11, 'Beatriz Lima', '2000-09-05', 'Umuarama', '44944443333', 'beatriz.lima@email.com', '11p.jpg'),
+(12, 'Thiago Rocha', '1997-12-25', 'Tuneiras do Oeste', '44933332222', 'thiago.rocha@email.com', '12p.jpg'),
+(13, 'Juliana Martins', '2004-07-19', 'Cruzeiro do Oeste', '44922221111', 'juliana.martins@email.com', '13p.jpg'),
+(14, 'Felipe Alves', '1999-03-08', 'Maringá', '44911110000', 'felipe.alves@email.com', '14p.jpg'),
+(15, 'Larissa Ferreira', '2002-10-11', 'Campo Mourão', '44900009999', 'larissa.ferreira@email.com', '15p.jpg'),
+(16, 'Mateus Ribeiro', '1996-01-22', 'Cianorte', '44987654321', 'mateus.ribeiro@email.com', '16p.jpg'),
+(17, 'Aline Barbosa', '2005-05-16', 'Paranavaí', '44912345678', 'aline.barbosa@email.com', '17p.jpg');
+
+INSERT INTO FICHA (id_moto, escapamento, suspensao, motor)
+VALUES
+(8, 'PowerCore 4', 'Preparada para Velocross', '250cc Original'),
+(9, 'Viola Racing', 'Revalvada Trilha', '230cc Original'),
+(10, 'FMF Factory 4.1', 'Showa Revalvada', '450cc Preparado'),
+(11, 'Pro Circuit Works', 'KYB Revalvada', '125cc Preparado 2T'),
+(12, 'Akrapovic Titanio', 'WP Cone Valve', '250cc Preparado 2T'),
+(13, 'Yoshimura RS-4', 'Showa Original', '250cc Original'),
+(14, 'FMF Titanium', 'Showa Revalvada', '450cc Original'),
+(15, 'Akrapovic Evolution', 'WP XACT Pro', '250cc Original'),
+(16, 'Pro Circuit T-6', 'WP XACT Original', '250cc Original'),
+(17, 'Borelli', 'Preparada Reforçada', '293cc Kit'),
+(18, 'Pro Tork V3', 'Original', '160cc Original'),
+(19, 'FMF Fatty', 'KYB Junior', '85cc Preparado 2T');
+
+INSERT INTO PILOTO (id_pessoa, numero_piloto, id_categoria, id_moto, id_equipe)
+VALUES
+(6, 15, 8, 8, 1),   -- Lucas Andrade (VX1, CRF250F, Richter Racing)
+(7, 23, 1, 9, 2),   -- Mariana Costa (Feminino, TTR230, Equipe Velocross)
+(8, 45, 11, 10, 3), -- Gabriel Santos (VX3 Master, KX450F, Parana Velocross)
+(9, 88, 18, 11, 2), -- Camila Oliveira (Batom / Batom Pro, YZ125, Equipe Velocross)
+(10, 10, 12, 12, 1),-- Rafael Souza (VX4 Senior, SX250, Richter Racing)
+(11, 77, 2, 13, 3), -- Beatriz Lima (Iniciante, RMZ250, Parana Velocross)
+(12, 33, 14, 14, 1),-- Thiago Rocha (Nacional Pro, CRF450R, Richter Racing)
+(13, 14, 18, 15, 2),-- Juliana Martins (Batom / Batom Pro, FE250, Equipe Velocross)
+(14, 92, 3, 16, 3), -- Felipe Alves (Intermediaria, XC250, Parana Velocross)
+(15, 21, 1, 17, 2), -- Larissa Ferreira (Feminino, XR250 Tornado, Equipe Velocross)
+(16, 100, 15, 18, 1),-- Mateus Ribeiro (Nacional Forca Livre, Bros 160, Richter Racing)
+(17, 5, 10, 19, 3);  -- Aline Barbosa (VX3 Junior, KX85, Parana Velocross)
+
+INSERT INTO CORRIDA (id_corrida, nome, cidade, data_corrida, id_categoria, foto)
+VALUES
+(6, '5ª Etapa Campo Touro Velocross', 'Campo Mourão', '2026-07-12', 8, '6pista.jpg'),
+(7, '6ª Etapa Cascavel MX', 'Cascavel', '2026-08-09', 9, '7pista.jpg'),
+(8, '7ª Etapa Londrina Velocross', 'Londrina', '2026-10-04', 10, '8pista.jpg'),
+(9, '8ª Etapa Paranavaí Night Cross', 'Paranavaí', '2026-10-25', 11, '9pista.jpg'),
+(10, 'GP Cruzeiro do Oeste Velocross', 'Cruzeiro do Oeste', '2026-11-08', 12, '10pista.jpg'),
+(11, 'Copa Norte de Velocross - Toledo', 'Toledo', '2026-11-22', 13, '11pista.jpg'),
+(12, 'Desafio das Estrelas - Tuneiras', 'Tuneiras do Oeste', '2026-12-06', 14, '12pista.jpg'),
+(13, 'Copa Verão MX - Umuarama', 'Umuarama', '2027-01-17', 15, '13pista.jpg'),
+(14, 'Troféu Batom Velocross', 'Maringá', '2027-02-07', 18, '14pista.jpg'),
+(15, '1ª Etapa Guarapuava Velocross', 'Guarapuava', '2027-02-28', 16, '15pista.jpg'),
+(16, 'Copa Kids Velocross - Cianorte', 'Cianorte', '2027-03-21', 17, '16pista.jpg'),
+(17, 'Superclássico das Nações MX', 'Cascavel', '2027-04-18', 19, '17pista.jpg');

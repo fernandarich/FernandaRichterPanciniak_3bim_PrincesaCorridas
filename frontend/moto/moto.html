@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CRUD de Motos</title>
+    <link rel="stylesheet" href="moto.css">
+</head>
+
+<body onload="listar()">
+    <header>
+        <h1>Cadastro de Motos</h1>
+        <p>Gerencie as motos do sistema.</p>
+    </header>
+
+    <main class="container-master">
+        <div class="conteudo-principal">
+            <section class="form-esquerda">
+                <h2>Dados da Moto</h2>
+
+                <label for="inputId_moto">ID da Moto (Até 2 digitos)</label>
+                <div class="linha-id">
+                    <input type="number" name="inputId_moto" id="inputId_moto" min="1" maxlength="2" placeholder="Ex: 01"
+                        style="text-transform: uppercase;">
+                    <input type="button" value="Procure" id="btProcure" onclick="procure()">
+                    <input type="button" value="Inserir" id="btInserir" onclick="inserir()" style="display:none;">
+                    <input type="button" value="Alterar" id="btAlterar" onclick="alterar()" style="display:none;">
+                    <input type="button" value="Excluir" id="btExcluir" onclick="excluir()" style="display:none;">
+                </div>
+
+                <label for="inputMarca_moto">Marca da Moto</label>
+                <input type="text" name="inputMarca_moto" id="inputMarca_moto" placeholder="Ex: Honda"><br>
+                <label for="inputModelo_moto">Modelo da Moto</label>
+                <input type="text" name="inputModelo_moto" id="inputModelo_moto" placeholder="Ex: CRF250F"><br>
+                <label for="inputAno_moto">Ano da Moto</label>
+                <input type="number" name="inputAno_moto" id="inputAno_moto" placeholder="Ex: 2022"><br>
+
+                <label for="inputFicha">Cadastrar ficha técnica agora?</label>
+                <input type="checkbox" name="inputFicha" id="inputFicha"><br>
+
+                <div id="areaFicha" style="display: none;">
+                    <label for="inputEscapamento">Escapamento</label>
+                    <input type="text" name="inputEscapamento" id="inputEscapamento" placeholder="Ex: Pro Tork Pro Series">
+                    <br>
+                    <label for="inputSuspensao">Suspensão</label>
+                    <input type="text" name="inputSuspensao" id="inputSuspensao" placeholder="Ex: Original Honda">
+                    <br>
+                    <label for="inputMotor">Motor</label>
+                    <input type="text" name="inputMotor" id="inputMotor" placeholder="Ex: Preparado 255c">
+                </div>
+
+                <div id="divAviso">Informe o ID e clique em Procure</div>
+
+                <div class="botoes-acao">
+                    <input type="button" value="Salvar" id="btSalvar" onclick="salvar()" style="display:none;">
+                    <input type="button" value="Cancelar" id="btCancelar" onclick="cancelarOperacao()"
+                        style="display:none;">
+                </div>
+            </section>
+
+            <aside class="form-direita">
+                <h2>Imagem da Moto</h2>
+                <p class="instrucao-imagem">(Clique na imagem para alterar)</p>
+                <div class="img-container">
+                    <img id="imgMoto" src="../imagens/silhueta.png" alt="Imagem da Moto" onclick="acionarUpload()">
+                    <input type="file" id="inputImagem" accept="image/*" style="display: none;"
+                        onchange="previewImagem()">
+                </div>
+            </aside>
+        </div>
+
+        <section class="lista-unidades">
+            <h3>Motos Cadastradas</h3>
+            <div id="outputSaida">Carregando...</div>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2026 Sistema CRUD Motos Todos os direitos reservados.</p>
+    </footer>
+
+    <script src="./moto.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CRUD Categoria de Velocross</title>
+    <link rel="stylesheet" href="categoria.css">
+</head>
+
+<body onload="listar()">
+    <header>
+        <h1>Cadastro de Categorias de Velocross</h1>
+        <p>Gerencie as categorias de velocross do sistema.</p>
+    </header>
+
+    <main class="container-master">
+        <div class="conteudo-principal">
+            <section class="form-esquerda">
+                <h2>Dados da Categoria</h2>
+                
+                <label for="inputId_categoria">ID da Categoria (Até 2 digitos)</label>
+                <div class="linha-id">
+                    <input type="number" name="inputId_categoria" id="inputId_categoria" min="1" maxlength="2" placeholder="Ex: 01" style="text-transform: uppercase;">
+                    <input type="button" value="Procure" id="btProcure" onclick="procure()">
+                    <input type="button" value="Inserir" id="btInserir" onclick="inserir()" style="display:none;">
+                    <input type="button" value="Alterar" id="btAlterar" onclick="alterar()" style="display:none;">
+                    <input type="button" value="Excluir" id="btExcluir" onclick="excluir()" style="display:none;">
+                </div>
+
+                <label for="inputNome_categoria">Nome da Categoria</label>
+                <input type="text" name="inputNome_categoria" id="inputNome_categoria" placeholder="Ex: Infantil">
+
+                <label for="inputDescricao_categoria">Descrição da Categoria</label>
+                <input type="text" name="inputDescricao_categoria" id="inputDescricao_categoria" placeholder="Ex: Categoria para crianças de 5 a 10 anos">
+
+                <div id="divAviso">Informe o ID e clique em Procure</div>
+
+                <div class="botoes-acao">
+                    <input type="button" value="Salvar" id="btSalvar" onclick="salvar()" style="display:none;">
+                    <input type="button" value="Cancelar" id="btCancelar" onclick="cancelarOperacao()" style="display:none;">
+                </div>
+            </section>
+        </div>
+
+        <section class="lista-unidades">
+            <h3>Categorias Cadastradas</h3>
+            <div id="outputSaida">Carregando...</div>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2026 Sistema CRUD Categorias. Todos os direitos reservados.</p>
+    </footer>
+
+    <script src="./categoria.js"></script>
+</body>
+
+</html>
